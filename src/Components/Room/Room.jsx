@@ -51,6 +51,12 @@ const Room = props => {
   useEffect(() => {
     socketRef.current = io.connect(
       "https://video-chat-capstone-api.herokuapp.com"
+      // {
+      //   withCredentials: true,
+      //   extraHeaders: {
+      //     "my-custom-header": "abcd",
+      //   },
+      // }
     );
 
     navigator.mediaDevices

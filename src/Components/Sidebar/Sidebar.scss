@@ -1,13 +1,16 @@
 .sidebar {
   display: flex;
+  position: absolute;
   flex-direction: column;
   flex: 0.25;
+  z-index: 2;
   height: 100vh;
 
   .sidebar__header {
     display: flex;
     justify-content: space-between;
     padding: 20px;
+    background-color: white;
     border-right: 1px solid lightgray;
 
     .sidebar__headerRight {

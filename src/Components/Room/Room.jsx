@@ -6,13 +6,12 @@ import styled from "styled-components";
 import Toolbar from "../Toolbar/Toolbar";
 
 const Container = styled.div`
-  padding: 20px;
   display: flex;
   height: 100vh;
   width: 100%;
-  margin: auto;
+  box-sizing: border-box;
   flex-wrap: wrap;
-  margin: 0 10px;
+  padding: 50px 0;
   justify-content: space-evenly;
 `;
 

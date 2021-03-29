@@ -15,8 +15,14 @@ const useStyles = makeStyles(theme => ({
     height: " 100px",
     borderRadius: "15px",
     position: "absolute",
+    opacity: "0.5",
+    transition: "opacity .25s",
     bottom: 20,
+    "&:hover": {
+      opacity: "1",
+    },
   },
+
   toolbar__box: {
     display: "flex",
     justifyContent: "space-evenly",

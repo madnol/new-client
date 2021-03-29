@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import React from "react";
 
 //*STYLES
-import "./Sidebar.scss";
+import "../Sidebar.scss";
 
 //*MATERIAL UI
 import {
@@ -16,18 +15,17 @@ import {
   Grid,
 } from "@material-ui/core";
 import {
-  SearchOutlined,
+  EditRounded,
   ExpandMore,
-  Person,
   AddRounded,
+  AddAPhotoRounded,
   SettingsRounded,
 } from "@material-ui/icons";
 import ChevronLeftRoundedIcon from "@material-ui/icons/ChevronLeftRounded";
 
 //*COMPONENTS
-import SidebarChat from "./SidebarChat/SidebarChat";
-
-import { useHistory } from "react-router-dom";
+import SidebarChat from "../SidebarChat/SidebarChat";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -44,60 +42,53 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Sidebar = props => {
-  const avatarRef = useRef(null);
-  const searchRef = useRef(null);
-
-  useEffect(() => {
-    gsap.from(avatarRef.current, {
-      duration: 1,
-      x: "-100vw",
-    });
-    gsap.from(searchRef.current, {
-      duration: 1,
-      x: "-100vw",
-      delay: 0.3,
-    });
-  }, []);
-
+const SidebarSetting = props => {
   const classes = useStyles();
-  const History = useHistory();
-  const handleSettings = e => {
-    e.preventDefault();
-    History.push("/settings");
-  };
 
   return (
     <div style={{ width: "400px" }} className="sidebar">
       <div className="sidebar__header">
         <div style={{ position: "relative" }}>
           <Avatar
-            ref={avatarRef}
             src="https://source.unsplash.com/600x600/?man"
             className={classes.avatar}
           />
+          <IconButton
+            style={{
+              width: "1.8em",
+              height: "1.8em",
+              backgroundColor: "#e0e0e0",
+              opacity: "0.8",
+              padding: "0.5em",
+              position: "absolute",
+              bottom: "10px",
+              right: "-10px",
+            }}
+          >
+            <AddAPhotoRounded style={{ color: "#1C1C1C", fontSize: "70%" }} />
+          </IconButton>
         </div>
         <div>
           <h3>Name</h3>
         </div>
         <div className="sidebar__headerRight">
-          <IconButton onClick={handleSettings}>
-            <SettingsRounded />
-          </IconButton>
-
+          <Link to="/">
+            <IconButton>
+              <SettingsRounded />
+            </IconButton>
+          </Link>
           <IconButton>
             <ChevronLeftRoundedIcon />
           </IconButton>
         </div>
       </div>
 
-      <div ref={searchRef} className="sidebar__search">
+      <div className="sidebar__search">
         <div className="sidebar__searchContainer">
-          <SearchOutlined />
-          <input placeholder="Search or start new chat" type="text" />
+          <input placeholder="Change your name" type="text" />
         </div>
         <Button variant="contained" className={classes.button}>
-          <Person />
+          <EditRounded />
         </Button>
       </div>
 
@@ -134,4 +125,4 @@ const Sidebar = props => {
   );
 };
 
-export default Sidebar;
+export default SidebarSetting;

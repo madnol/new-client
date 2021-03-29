@@ -8,6 +8,15 @@ const useStyles = makeStyles(theme => ({
   avatar: {
     margin: theme.spacing(3, 3),
   },
+  badge: {
+    backgroundColor: "gray",
+    width: "10px",
+    height: "10px",
+    position: "absolute",
+    top: "27px",
+    left: "54px",
+    borderRadius: "50px",
+  },
 }));
 
 const SidebarChat = props => {
@@ -18,12 +27,15 @@ const SidebarChat = props => {
   const create = () => {
     // const id = uuidV4();
     console.log(props);
-    history.push(`/hometest`);
+    history.push(`/room/hometest`);
   };
 
   return (
     <div className="sidebarChat">
-      <Avatar className={classes.avatar} />
+      <div style={{ position: "relative" }}>
+        <Avatar className={classes.avatar} />
+        <div className={classes.badge}></div>
+      </div>
       <div className="sidebarChat__info">
         <h2>Room name</h2>
         <p>This is the last message</p>

@@ -19,7 +19,6 @@ const StyledVideo = styled.video`
   height: 300px;
   width: 400px;
   margin-bottom: 1em;
-  border-radius: 50px 50px 50px 0;
   object-fit: cover;
   border-radius: 20px;
 `;
@@ -50,7 +49,9 @@ const Room = props => {
   const roomID = props.match.params.roomID;
 
   useEffect(() => {
-    socketRef.current = io.connect("/");
+    socketRef.current = io.connect(
+      "https://video-chat-capstone-api.herokuapp.com"
+    );
 
     navigator.mediaDevices
       .getUserMedia({ video: videoConstraints, audio: true })

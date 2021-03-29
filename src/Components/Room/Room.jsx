@@ -18,6 +18,8 @@ const Container = styled.div`
 const StyledVideo = styled.video`
   height: 300px;
   width: 400px;
+  margin-bottom: 1em;
+  border-radius: 50px 50px 50px 0;
   object-fit: cover;
   border-radius: 20px;
 `;

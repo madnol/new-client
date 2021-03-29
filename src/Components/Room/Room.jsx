@@ -50,7 +50,7 @@ const Room = props => {
 
   useEffect(() => {
     socketRef.current = io.connect(
-      "https://video-chat-capstone-api.herokuapp.com"
+      "https://video-chat-please.herokuapp.com"
       // {
       //   withCredentials: true,
       //   extraHeaders: {

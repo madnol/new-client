@@ -4,6 +4,8 @@ import Peer from "simple-peer";
 import styled from "styled-components";
 
 import Toolbar from "../Toolbar/Toolbar";
+import { Avatar, Box, makeStyles } from "@material-ui/core";
+import { MicOffRounded } from "@material-ui/icons";
 
 const Container = styled.div`
   display: flex;
@@ -167,17 +169,47 @@ const Room = props => {
     return peer;
   };
 
-  // const muteUnmute = (e, track, stream, peer) => {
-  //   console.log("mute");
-  //   peer.removeTrack(track, stream);
-  // };
+  const muteUnmute = (e, track, stream, peer) => {
+    console.log("mute");
+    peer.removeTrack(track, stream);
+  };
 
-  // const stopStartVideo = () => {};
+  const useStyles = makeStyles(theme => ({
+    blakBox: {
+      width: "400px",
+      height: "300px",
+      borderRadius: "20px",
+      backgroundColor: "rgb(47, 47, 47)",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+  }));
+
+  const classes = useStyles();
 
   return (
     <Container>
-      <StyledVideo muted ref={userVideo} autoPlay playsInline />
-
+      <div style={{ position: "relative", display: "flex", height: "300px" }}>
+        {video ? (
+          <StyledVideo muted ref={userVideo} autoPlay playsInline />
+        ) : (
+          <Box className={classes.blakBox}>
+            <Avatar style={{ width: "100px", height: "100px" }} />
+          </Box>
+        )}
+        {!audio && (
+          <MicOffRounded
+            style={{
+              position: "absolute",
+              bottom: "20px",
+              right: "20px",
+              fontSize: "2em",
+              color: "red",
+            }}
+          />
+        )}
+      </div>
       {peers.map((peer, index) => {
         return <Video key={index} peer={peer.peer} />;
       })}
@@ -188,8 +220,8 @@ const Room = props => {
         setAudio={setAudio}
         screen={screen}
         setScreen={setScreen}
-        //  muteUnmute={muteUnmute}
-        //   stopStartVideo={stopStartVideo}
+        muteUnmute={muteUnmute}
+        // stopStartVideo={stopStartVideo}
       />
     </Container>
   );

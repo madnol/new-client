@@ -1,5 +1,5 @@
-import React, { useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import React, { useState } from "react";
+import Modal from "../Modal/Modal";
 
 //*STYLES
 import "./Sidebar.scss";
@@ -45,20 +45,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const Sidebar = props => {
-  const avatarRef = useRef(null);
-  const searchRef = useRef(null);
-
-  useEffect(() => {
-    gsap.from(avatarRef.current, {
-      duration: 1,
-      x: "-100vw",
-    });
-    gsap.from(searchRef.current, {
-      duration: 1,
-      x: "-100vw",
-      delay: 0.3,
-    });
-  }, []);
+  const [open, setOpen] = useState(false);
 
   const classes = useStyles();
   const History = useHistory();
@@ -69,13 +56,10 @@ const Sidebar = props => {
 
   return (
     <div style={{ width: "400px" }} className="sidebar">
+      <Modal open={open} setOpen={setOpen} />
       <div className="sidebar__header">
         <div style={{ position: "relative" }}>
-          <Avatar
-            ref={avatarRef}
-            src="https://source.unsplash.com/600x600/?man"
-            className={classes.avatar}
-          />
+          <Avatar className={classes.avatar} />
         </div>
         <div>
           <h3>Name</h3>
@@ -91,7 +75,7 @@ const Sidebar = props => {
         </div>
       </div>
 
-      <div ref={searchRef} className="sidebar__search">
+      <div className="sidebar__search">
         <div className="sidebar__searchContainer">
           <SearchOutlined />
           <input placeholder="Search or start new chat" type="text" />
@@ -117,7 +101,10 @@ const Sidebar = props => {
           <Grid container>
             <Grid item xs={9}></Grid>
             <Grid item xs={3}>
-              <IconButton className={classes.createRoom}>
+              <IconButton
+                onClick={() => setOpen(!open)}
+                className={classes.createRoom}
+              >
                 <AddRounded />
               </IconButton>
             </Grid>

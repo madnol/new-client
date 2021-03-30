@@ -42,6 +42,10 @@ const videoConstraints = {
 
 const Room = props => {
   const [peers, setPeers] = useState([]);
+  const [video, setVideo] = useState(true);
+  const [audio, setAudio] = useState(true);
+  const [screen, setScreen] = useState(true);
+
   const socketRef = useRef();
   const userVideo = useRef();
   const peersRef = useRef([]);
@@ -124,6 +128,8 @@ const Room = props => {
           setPeers(peers);
         });
       });
+
+    return () => console.log("clean");
   }, [roomID]);
 
   const createPeer = (userToSignal, callerID, stream) => {
@@ -176,8 +182,12 @@ const Room = props => {
         return <Video key={index} peer={peer.peer} />;
       })}
       <Toolbar
-      //  muteUnmute={muteUnmute}
-      //   stopStartVideo={stopStartVideo}
+        video={video}
+        setVideo={setVideo}
+        audio={audio}
+        setAudio={setAudio}
+        screen={screen}
+        setScreen={setScreen}
       />
     </Container>
   );

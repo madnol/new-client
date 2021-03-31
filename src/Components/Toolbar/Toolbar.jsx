@@ -16,6 +16,8 @@ const useStyles = makeStyles(theme => ({
     height: " 80px",
     borderRadius: "15px",
     position: "absolute",
+    boxShadow:
+      "0 0.8px 2.2px rgba(0, 0, 0, 0.02), 0 2px 5.3px rgba(0, 0, 0, 0.028), 0 3.8px 10px rgba(0, 0, 0, 0.035), 0 6.7px 17.9px rgba(0, 0, 0, 0.042),  0 12.5px 33.4px rgba(0, 0, 0, 0.05),  0 30px 80px rgba(0, 0, 0, 0.07)",
 
     opacity: "0.5",
     transition: "opacity .25s",
@@ -45,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 const Toolbar = ({ video, setVideo, audio, setAudio, screen, setScreen }) => {
   const classes = useStyles();
   return (
-    <Paper elevation={5} className={classes.toolbar}>
+    <Paper className={classes.toolbar}>
       <Box p={3} className={classes.toolbar__box}>
         <IconButton
           className={classes.toolbar__box__button}

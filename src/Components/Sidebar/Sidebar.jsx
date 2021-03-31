@@ -59,10 +59,13 @@ const Sidebar = props => {
       <Modal open={open} setOpen={setOpen} />
       <div className="sidebar__header">
         <div style={{ position: "relative" }}>
-          <Avatar className={classes.avatar} />
+          <Avatar
+            src="https://media-exp1.licdn.com/dms/image/C4D03AQGe_RVJMxNHjA/profile-displayphoto-shrink_400_400/0/1616322657311?e=1622678400&v=beta&t=aWsQx1KcQiT2NsSvUye8myaQIOSz8o6bMGJCnTOw87w"
+            className={classes.avatar}
+          />
         </div>
-        <div>
-          <h3>Name</h3>
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <h3>Manuel </h3>
         </div>
         <div className="sidebar__headerRight">
           <IconButton onClick={handleSettings}>

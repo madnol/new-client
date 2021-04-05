@@ -72,7 +72,7 @@ const SidebarSetting = props => {
           <h3>Name</h3>
         </div>
         <div className="sidebar__headerRight">
-          <Link to="/">
+          <Link to="/home">
             <IconButton>
               <SettingsRounded />
             </IconButton>

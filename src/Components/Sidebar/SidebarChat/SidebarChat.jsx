@@ -27,7 +27,7 @@ const SidebarChat = props => {
   const create = () => {
     // const id = uuidV4();
     console.log(props);
-    history.push(`/room/hometest`);
+    history.push(`home/room/hometest`);
   };
 
   return (

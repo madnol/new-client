@@ -3,6 +3,8 @@ import Modal from "../Modal/Modal";
 //*STYLES
 import "./Sidebar.scss";
 
+import { motion } from "framer-motion";
+
 //*MATERIAL UI
 import {
   Avatar,
@@ -45,16 +47,30 @@ const useStyles = makeStyles(theme => ({
 
 const Sidebar = props => {
   const [open, setOpen] = useState(false);
-
+  const [sidebar, setSidebar] = useState(true);
   const classes = useStyles();
   const History = useHistory();
   const handleSettings = e => {
     e.preventDefault();
-    History.push("/settings");
+    History.push("/home/settings");
   };
 
   return (
-    <div style={{ width: "400px" }} className="sidebar">
+    <motion.div
+      style={
+        sidebar
+          ? {
+              width: "380px",
+              transform: "translateX(0)",
+              transition: "transform 1s",
+            }
+          : {
+              transform: "translateX(-280px)",
+              transition: "transform 1s",
+            }
+      }
+      className="sidebar"
+    >
       <Modal open={open} setOpen={setOpen} />
       <div className="sidebar__header">
         <div style={{ position: "relative" }}>
@@ -71,7 +87,18 @@ const Sidebar = props => {
             <SettingsRounded />
           </IconButton>
 
-          <IconButton>
+          <IconButton
+            onClick={() => setSidebar(!sidebar)}
+            style={
+              !sidebar
+                ? {
+                    transform: "rotate(180deg)",
+
+                    transition: "transform 1s",
+                  }
+                : { transition: "transform 1s" }
+            }
+          >
             <ChevronLeftRoundedIcon />
           </IconButton>
         </div>
@@ -119,7 +146,7 @@ const Sidebar = props => {
           <SidebarChat />
         </Accordion>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

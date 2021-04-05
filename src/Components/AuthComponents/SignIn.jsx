@@ -7,10 +7,11 @@ import {
   Paper,
   Box,
 } from "@material-ui/core";
+import { AiOutlineGoogle } from "react-icons/ai";
 
 //*userAction
 
-const SignUp = () => {
+const SignIn = props => {
   const useStyles = makeStyles({
     button: {
       width: "100%",
@@ -55,8 +56,21 @@ const SignUp = () => {
               size="large"
               variant="contained"
               color="primary"
+              style={{ marginBottom: "1em" }}
             >
-              SIGN UP
+              SIGN IN
+            </Button>
+
+            <Button
+              className={classes.button}
+              size="large"
+              variant="contained"
+              color="primary"
+            >
+              <AiOutlineGoogle
+                style={{ fontSize: "1.5em", marginRight: "1em" }}
+              />
+              SIGN UP WITH GOOGLE
             </Button>
           </Grid>
         </Box>
@@ -65,4 +79,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

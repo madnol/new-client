@@ -61,6 +61,7 @@ const Sidebar = props => {
         sidebar
           ? {
               width: "380px",
+              height: "100vh",
               transform: "translateX(0)",
               transition: "transform 1s",
             }

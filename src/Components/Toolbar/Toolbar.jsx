@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const Toolbar = ({ video, setVideo, audio, setAudio, screen, setScreen }) => {
+const Toolbar = ({ video, audio, setVideo, screen, setScreen, muteUnmute }) => {
   const classes = useStyles();
   return (
     <Paper className={classes.toolbar}>
@@ -64,7 +64,7 @@ const Toolbar = ({ video, setVideo, audio, setAudio, screen, setScreen }) => {
 
         <IconButton
           className={classes.toolbar__box__button}
-          onClick={() => setAudio(!audio)}
+          onClick={muteUnmute}
         >
           {audio ? (
             <MicRounded className={classes.toolbar__box__button__icon} />

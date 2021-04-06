@@ -72,12 +72,6 @@ const Room = props => {
 
         socketRef.current.emit("join room", roomID);
 
-        //*TELL ME IF THE ROOM IS FULL
-        socketRef.current.on("room full", payload => {
-          socketRef.current.emit(payload);
-          console.log("room is full!");
-        });
-
         socketRef.current.on("all users", users => {
           const peers = [];
           users.forEach(userID => {
@@ -169,9 +163,14 @@ const Room = props => {
     return peer;
   };
 
-  const muteUnmute = (e, track, stream, peer) => {
-    console.log("mute");
-    peer.removeTrack(track, stream);
+  // const mute = peer => {
+  //   peer.removeTrack(peer.track, peer.stream);
+  // };
+
+  const muteUnmute = e => {
+    e.preventDefault();
+    setAudio(!audio);
+    // mute();
   };
 
   const useStyles = makeStyles(theme => ({
@@ -198,6 +197,7 @@ const Room = props => {
             <Avatar style={{ width: "100px", height: "100px" }} />
           </Box>
         )}
+
         {!audio && (
           <MicOffRounded
             style={{

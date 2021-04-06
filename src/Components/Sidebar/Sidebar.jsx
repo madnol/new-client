@@ -57,19 +57,19 @@ const Sidebar = props => {
 
   return (
     <motion.div
-      style={
-        sidebar
-          ? {
-              width: "380px",
-              height: "100vh",
-              transform: "translateX(0)",
-              transition: "transform 1s",
-            }
-          : {
-              transform: "translateX(-280px)",
-              transition: "transform 1s",
-            }
-      }
+      // style={
+      //     sidebar
+      //       ? {
+      //           width: "380px",
+      //           height: "100vh",
+      //           transform: "translateX(0)",
+      //           transition: "transform 1s",
+      //         }
+      //       : {
+      //           transform: "translateX(-280px)",
+      //           transition: "transform 1s",
+      //         }
+      // }
       className="sidebar"
     >
       <Modal open={open} setOpen={setOpen} />
@@ -80,7 +80,13 @@ const Sidebar = props => {
             className={classes.avatar}
           />
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            marginLeft: "1em",
+          }}
+        >
           <h3>Manuel </h3>
         </div>
         <div className="sidebar__headerRight">

@@ -9,7 +9,7 @@ import {
 } from "@material-ui/core";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { userLoginApi } from "../../api/authApi";
-import { useHistory, link } from "react-router-dom";
+// import { useHistory, link } from "react-router-dom";
 //*userAction
 
 const SignIn = ({ props, setUser }) => {
@@ -35,10 +35,10 @@ const SignIn = ({ props, setUser }) => {
   const classes = useStyles();
 
   const handleLogin = () => {
-    const credentials = {
-      username: username.current.value,
-      password: password.current.value,
-    };
+    // const credentials = {
+    //   username: username.current.value,
+    //   password: password.current.value,
+    // };
   };
 
   return (

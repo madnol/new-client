@@ -9,7 +9,7 @@ import { MicOffRounded } from "@material-ui/icons";
 
 //*ANIMATIONS
 
-import { motion } from "framer-motion";
+// import { motion } from "framer-motion";
 import { popUp } from "../../animations";
 
 const Container = styled.div`

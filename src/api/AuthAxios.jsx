@@ -1,5 +1,4 @@
 import axios from "axios";
-import createAuthRefreshInterceptor from "axios-auth-refresh";
 
 const { REACT_APP_API_URI } = process.env;
 const refreshAuthLogic = failedRequest => {

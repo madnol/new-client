@@ -56,6 +56,7 @@ export const searchUser = async query => {
         withCredentials: true,
       }
     );
+    return user.data;
   } catch (err) {
     console.log(err);
     return null;

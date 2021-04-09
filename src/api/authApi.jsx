@@ -8,10 +8,10 @@ export const userLoginApi = async credentials => {
       credentials
     );
     console.log(login);
-
+    7;
     return login.data;
   } catch (error) {
-    console.log(error);
+    console.log(err);
     return null;
   }
 };

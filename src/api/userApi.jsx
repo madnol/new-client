@@ -3,20 +3,14 @@ const { REACT_APP_API_URI } = process.env;
 
 export const registerUser = async credentials => {
   try {
-    console.log(credentials);
-
     const user = await axios.post(
       `${REACT_APP_API_URI}/api/users/register`,
       credentials,
       {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
+        withCredentials: true,
       }
     );
-    console.log(user.data);
+    console.log(user);
     return user.data;
   } catch (err) {
     console.log(err);

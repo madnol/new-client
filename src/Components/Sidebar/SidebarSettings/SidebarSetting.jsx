@@ -50,7 +50,7 @@ const SidebarSetting = props => {
       <div className="sidebar__header">
         <div style={{ position: "relative" }}>
           <Avatar
-            src="https://media-exp1.licdn.com/dms/image/C4D03AQGe_RVJMxNHjA/profile-displayphoto-shrink_400_400/0/1616322657311?e=1622678400&v=beta&t=aWsQx1KcQiT2NsSvUye8myaQIOSz8o6bMGJCnTOw87w"
+            src="https://source.unsplash.com/600x600/?man"
             className={classes.avatar}
           />
           <IconButton
@@ -68,14 +68,8 @@ const SidebarSetting = props => {
             <AddAPhotoRounded style={{ color: "#1C1C1C", fontSize: "70%" }} />
           </IconButton>
         </div>
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            marginLeft: "1em",
-          }}
-        >
-          <h3>Manuel </h3>
+        <div>
+          <h3>Name</h3>
         </div>
         <div className="sidebar__headerRight">
           <Link to="/home">

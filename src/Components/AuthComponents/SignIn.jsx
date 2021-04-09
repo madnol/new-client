@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import {
   TextField,
   Button,
@@ -8,14 +8,10 @@ import {
   Box,
 } from "@material-ui/core";
 import { AiOutlineGoogle } from "react-icons/ai";
-import { userLoginApi } from "../../api/authApi";
-import { useHistory, link } from "react-router-dom";
+
 //*userAction
 
-const SignIn = ({ props, setUser }) => {
-  const username = useRef();
-  const password = useRef();
-
+const SignIn = props => {
   const useStyles = makeStyles({
     button: {
       width: "100%",
@@ -28,18 +24,7 @@ const SignIn = ({ props, setUser }) => {
     },
   });
 
-  useEffect(() => {
-    userLoginApi();
-  }, []);
-
   const classes = useStyles();
-
-  const handleLogin = () => {
-    const credentials = {
-      username: username.current.value,
-      password: password.current.value,
-    };
-  };
 
   return (
     <div>
@@ -53,7 +38,6 @@ const SignIn = ({ props, setUser }) => {
           >
             <TextField
               label="Username"
-              ref={username}
               variant="outlined"
               size="small"
               style={{ marginBottom: "1em" }}
@@ -61,7 +45,6 @@ const SignIn = ({ props, setUser }) => {
 
             <TextField
               label="Password"
-              ref={password}
               type="password"
               size="small"
               autoComplete="current-password"
@@ -74,7 +57,6 @@ const SignIn = ({ props, setUser }) => {
               variant="contained"
               color="primary"
               style={{ marginBottom: "1em" }}
-              onClick={handleLogin}
             >
               SIGN IN
             </Button>

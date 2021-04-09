@@ -64,7 +64,7 @@ const Room = props => {
       // withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd",
-        "Access-Control-Allow-Origin": process.env.REACT_APP_API_URI,
+        // "Access-Control-Allow-Origin": process.env.REACT_APP_API_URI,
         "Access-Control-Allow-Credentials": true,
       },
     });

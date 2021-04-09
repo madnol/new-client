@@ -7,6 +7,11 @@ import Toolbar from "../Toolbar/Toolbar";
 import { Avatar, Box, makeStyles } from "@material-ui/core";
 import { MicOffRounded } from "@material-ui/icons";
 
+//*ANIMATIONS
+
+import { motion } from "framer-motion";
+import { popUp } from "../../animations";
+
 const Container = styled.div`
   display: flex;
   height: 100vh;
@@ -55,15 +60,12 @@ const Room = props => {
   const roomID = props.match.params.roomID;
 
   useEffect(() => {
-    socketRef.current = io.connect(
-      "https://video-chat-please.herokuapp.com"
-      // {
-      //   withCredentials: true,
-      //   extraHeaders: {
-      //     "my-custom-header": "abcd",
-      //   },
-      // }
-    );
+    socketRef.current = io.connect("https://video-chat-please.herokuapp.com", {
+      withCredentials: true,
+      extraHeaders: {
+        "my-custom-header": "abcd",
+      },
+    });
 
     navigator.mediaDevices
       .getUserMedia({ video: videoConstraints, audio: true })
@@ -211,7 +213,15 @@ const Room = props => {
         )}
       </div>
       {peers.map((peer, index) => {
-        return <Video key={index} peer={peer.peer} />;
+        return (
+          <Video
+            variant={popUp}
+            initial="hidden"
+            animate="show"
+            key={index}
+            peer={peer.peer}
+          />
+        );
       })}
       <Toolbar
         video={video}

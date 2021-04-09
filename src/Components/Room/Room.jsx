@@ -64,8 +64,16 @@ const Room = props => {
       withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
       },
     });
+
+    // headers: {
+    //   "Access-Control-Allow-Origin": "*",
+    //   "Content-Type": "application/json",
+    //   "Access-Control-Allow-Credentials": true,
+    // },
 
     navigator.mediaDevices
       .getUserMedia({ video: videoConstraints, audio: true })

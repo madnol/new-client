@@ -10,7 +10,7 @@ export const registerUser = async credentials => {
       credentials,
       {
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": REACT_APP_API_URI,
           "Content-Type": "application/json",
           "Access-Control-Allow-Credentials": true,
         },

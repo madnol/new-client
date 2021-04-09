@@ -60,11 +60,11 @@ const Room = props => {
   const roomID = props.match.params.roomID;
 
   useEffect(() => {
-    socketRef.current = io.connect(process.env.REACT_APP_API_URI, {
+    socketRef.current = io.connect("http://localhost:3001", {
       // withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd",
-        // "Access-Control-Allow-Origin": process.env.REACT_APP_API_URI,
+        "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Credentials": true,
       },
     });

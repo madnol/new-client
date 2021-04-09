@@ -28,7 +28,11 @@ import ChevronLeftRoundedIcon from "@material-ui/icons/ChevronLeftRounded";
 //*COMPONENTS
 import SidebarChat from "./SidebarChat/SidebarChat";
 
+//*ROUTER
 import { useHistory } from "react-router-dom";
+
+//*ANIMATIONS
+import { slide, avatar } from "../../animations";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
@@ -57,29 +61,24 @@ const Sidebar = props => {
 
   return (
     <motion.div
-      // style={
-      //     sidebar
-      //       ? {
-      //           width: "380px",
-      //           height: "100vh",
-      //           transform: "translateX(0)",
-      //           transition: "transform 1s",
-      //         }
-      //       : {
-      //           transform: "translateX(-280px)",
-      //           transition: "transform 1s",
-      //         }
-      // }
       className="sidebar"
+      variants={slide}
+      initial="slideOut"
+      animate="slideIn"
     >
       <Modal open={open} setOpen={setOpen} />
       <div className="sidebar__header">
-        <div style={{ position: "relative" }}>
+        <motion.div
+          variants={avatar}
+          initial="slideOut"
+          animate="slideIn"
+          style={{ position: "relative" }}
+        >
           <Avatar
             src="https://media-exp1.licdn.com/dms/image/C4D03AQGe_RVJMxNHjA/profile-displayphoto-shrink_400_400/0/1616322657311?e=1622678400&v=beta&t=aWsQx1KcQiT2NsSvUye8myaQIOSz8o6bMGJCnTOw87w"
             className={classes.avatar}
           />
-        </div>
+        </motion.div>
         <div
           style={{
             display: "flex",
@@ -90,24 +89,32 @@ const Sidebar = props => {
           <h3>Manuel </h3>
         </div>
         <div className="sidebar__headerRight">
-          <IconButton onClick={handleSettings}>
-            <SettingsRounded />
-          </IconButton>
-
-          <IconButton
-            onClick={() => setSidebar(!sidebar)}
-            style={
-              !sidebar
-                ? {
-                    transform: "rotate(180deg)",
-
-                    transition: "transform 1s",
-                  }
-                : { transition: "transform 1s" }
-            }
+          <motion.div
+            animate={{
+              rotate: [0, 0, 270, 270, 0],
+              scale: [1, 1.3, 1.3, 1],
+              transition: {
+                delay: 1,
+              },
+            }}
           >
-            <ChevronLeftRoundedIcon />
-          </IconButton>
+            <IconButton onClick={handleSettings}>
+              <SettingsRounded />
+            </IconButton>
+          </motion.div>
+
+          <motion.div
+            animate={{
+              scale: [1, 1.5, 1.5, 1],
+              transition: {
+                delay: 2,
+              },
+            }}
+          >
+            <IconButton onClick={() => setSidebar(!sidebar)}>
+              <ChevronLeftRoundedIcon />
+            </IconButton>
+          </motion.div>
         </div>
       </div>
 

@@ -60,7 +60,7 @@ const Room = props => {
   const roomID = props.match.params.roomID;
 
   useEffect(() => {
-    socketRef.current = io.connect("http://localhost:3001", {
+    socketRef.current = io.connect(process.env.REACT_APP_API_URI, {
       // withCredentials: true,
       extraHeaders: {
         "my-custom-header": "abcd",

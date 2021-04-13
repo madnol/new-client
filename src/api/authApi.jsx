@@ -3,9 +3,16 @@ const { REACT_APP_API_URI } = process.env;
 
 export const userLoginApi = async credentials => {
   try {
+    console.log(credentials);
     const login = await axios.post(
       `${REACT_APP_API_URI}/api/auth/login`,
-      credentials
+      credentials,
+      {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }
     );
     console.log(login);
 
@@ -18,8 +25,13 @@ export const userLoginApi = async credentials => {
 
 export const getCurrentUserApi = async () => {
   try {
+    // console.log(window.localStorage.getItem("accessToken"));
     const resp = await axios.get(`${REACT_APP_API_URI}/api/users/me`, {
       withCredentials: true,
+      headers: {
+        Authorization: `Bearer ${window.localStorage.getItem("accessToken")}`,
+        "Content-Type": "application/json",
+      },
     });
     const currentUser = await resp.data;
     return currentUser;

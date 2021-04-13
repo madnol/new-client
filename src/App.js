@@ -10,15 +10,21 @@ import { Route } from "react-router-dom";
 
 function App() {
   const [user, setUser] = useState({});
+  const [userData, setUserData] = useState({});
   // const [loading, setLoading] = useState(false);
 
   return (
     <>
       <Route
         path="/auth"
-        render={props => <Auth props={props} setUser={setUser} />}
+        render={props => (
+          <Auth props={props} setUser={setUser} setUserData={setUserData} />
+        )}
       />
-      <Route path="/home" render={props => <Home {...props} user={user} />} />
+      <Route
+        path="/home"
+        render={props => <Home {...props} user={user} userData={userData} />}
+      />
     </>
   );
 }

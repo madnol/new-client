@@ -8,7 +8,7 @@ import { Route, useRouteMatch } from "react-router-dom";
 import { Grid } from "@material-ui/core";
 
 // import theme from "../../theme";
-const Auth = ({ props, setUser }) => {
+const Auth = ({ props, setUser, setUserData }) => {
   const { path } = useRouteMatch();
 
   return (
@@ -21,11 +21,19 @@ const Auth = ({ props, setUser }) => {
       spacing={5}
     >
       <Grid item>
-        <SignUp setUser={setUser} />
+        <Route
+          path={`${path}/register`}
+          exact
+          render={props => (
+            <SignUp props={props} setUser={setUser} setUserData={setUserData} />
+          )}
+        />
         <Route
           path={`${path}/login`}
           exact
-          render={props => <SignIn props={props} setUser={setUser} />}
+          render={props => (
+            <SignIn props={props} setUser={setUser} setUserData={setUserData} />
+          )}
         />
       </Grid>
     </Grid>

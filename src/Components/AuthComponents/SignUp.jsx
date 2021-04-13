@@ -25,11 +25,11 @@ const SignUp = ({ setUser }) => {
 
   const handleRegister = async () => {
     const credentials = {
-      name: name,
-      lastname: lastname,
-      username: username,
-      email: email,
-      password: password,
+      name,
+      lastname,
+      username,
+      email,
+      password,
     };
 
     const registration = await registerUser(credentials);

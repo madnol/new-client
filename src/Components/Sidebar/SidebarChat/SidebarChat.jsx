@@ -3,13 +3,14 @@ import { Avatar, makeStyles, Button } from "@material-ui/core";
 // import { v4 as uuidV4 } from "uuid";
 import { useHistory } from "react-router-dom";
 import "./SidebarChat.scss";
+import RJ from "../../../Assets/images/richard.jpg";
 
 const useStyles = makeStyles(theme => ({
   avatar: {
     margin: theme.spacing(3, 3),
   },
   badge: {
-    backgroundColor: "gray",
+    backgroundColor: "#54df59",
     width: "10px",
     height: "10px",
     position: "absolute",
@@ -33,11 +34,11 @@ const SidebarChat = props => {
   return (
     <div className="sidebarChat">
       <div style={{ position: "relative" }}>
-        <Avatar className={classes.avatar} />
+        <Avatar src={RJ} className={classes.avatar} />
         <div className={classes.badge}></div>
       </div>
       <div className="sidebarChat__info">
-        <h2>Room name</h2>
+        <h2>Richard</h2>
         <p>This is the last message</p>
       </div>
       <Button onClick={create}>Call</Button>

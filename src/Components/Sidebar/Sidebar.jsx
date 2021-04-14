@@ -134,7 +134,6 @@ const Sidebar = props => {
             <Typography variant="h5">Contacts</Typography>
           </AccordionSummary>
           <SidebarChat routeProps={props} />
-          <SidebarChat />
         </Accordion>
 
         <Accordion>
